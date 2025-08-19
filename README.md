@@ -27,29 +27,32 @@ Dr.Moti는 온라인 공간에서 이모지를 활용한 마약 관련 은어를
 
 ### 필수 요구사항
 
-- Node.js 16.0 이상
-- npm 또는 yarn
 
-### 설치 방법
+#### Node.js 설치치
+1. [Node.js 공식 사이트](https://nodejs.org/)에서 LTS 버전 다운로드
+2. 설치 파일 실행 후 기본 설정으로 설치
+3. 설치 완료 후 터미널에서 확인:
+   ```bash
+   node --version
+   npm --version
+   ```
+
+### 설치 및 실행 방법
 
 ```bash
-# 저장소 클론
-git clone <repository-url>
-cd dr-moti-prototype
+# 1. 저장소 클론
+git clone https://github.com/shhma/Dr.moti_prototype.git
+cd Dr.moti_prototype
 
-# 의존성 설치
+# 2. 의존성 설치
 npm install
 
-# 개발 서버 실행
-npm run dev
-
-# 또는 프로덕션 실행
+# 3. 서버 실행
 npm start
+
+# 4. 브라우저에서 접속
+# http://localhost:3000
 ```
-
-### 접속 방법
-
-브라우저에서 `http://localhost:3000`으로 접속하세요.
 
 ## 📊 위험도 분류 기준
 
@@ -71,82 +74,3 @@ Final = 0.45 × Rule + 0.25 × Emotion + 0.10 × CLIP + 0.20 × LLM
 - **Emotion**: 25% - KoBERT 기반 감정 분석
 - **CLIP**: 10% - 이모지-텍스트 유사도 분석
 - **LLM**: 20% - 새로운 패턴 탐지 및 맥락 분석
-
-## 🧪 테스트 케이스
-
-프로토타입에는 다음과 같은 테스트 케이스가 포함되어 있습니다:
-
-### 고위험 케이스
-```
-오늘 급해. DM 가능? 🍁 가격 말해줘
-```
-- 예상 점수: 70+ (고위험)
-- 탐지 요소: 대마 이모지 + 거래 키워드
-
-### 중위험 케이스
-```
-요즘 너무 힘들다... 친구들이 🍄 얘기하던데 혹시 DM?
-```
-- 예상 점수: 40-69 (중위험)
-- 탐지 요소: 취약한 감정 + 은어 이모지
-
-### 저위험 케이스
-```
-크림파스타 먹자 🍄 ㅋㅋ 레시피 링크 줄게
-```
-- 예상 점수: < 40 (저위험)
-- 탐지 요소: 요리 맥락으로 오탐 방지
-
-### 새로운 패턴 케이스
-```
-오늘 밤 파티 가자 ✨💊
-```
-- 예상 점수: 50-60 (중위험)
-- 탐지 요소: 새로운 이모지 조합
-
-## 🔒 프라이버시 및 보안
-
-- **익명화**: 해시 기반 가명 처리
-- **데이터 보관**: 최소화 정책 (30일 롤링)
-- **접근 통제**: 감사 로그 유지
-- **옵트인**: 비공개 DM은 디바이스 내 분석만 수행
-
-## 📈 향후 개발 계획
-
-### 단기 목표
-- [ ] 실제 KoBERT 모델 통합
-- [ ] OpenCLIP 모델 구현
-- [ ] 실시간 API 성능 최적화
-- [ ] 더 정확한 한국어 토큰화
-
-### 중기 목표
-- [ ] 플랫폼 연동 (SNS, 메신저)
-- [ ] 보호자 대시보드 개발
-- [ ] 상담사 연계 시스템
-- [ ] 모바일 앱 개발
-
-### 장기 목표
-- [ ] 다국어 지원
-- [ ] 실시간 학습 시스템
-- [ ] 법적 근거 강화
-- [ ] 국제 표준화
-
-## 🤝 기여 방법
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 `LICENSE` 파일을 참조하세요.
-
-## 📞 문의
-
-프로젝트에 대한 문의사항이나 제안사항이 있으시면 이슈를 생성해 주세요.
-
----
-
-**Dr.Moti** - 미성년자 보호를 위한 AI 기반 탐지 시스템
