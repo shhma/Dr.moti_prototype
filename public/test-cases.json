@@ -1,0 +1,57 @@
+{
+  "testCases": {
+    "high-risk": {
+      "text": "오늘 급해. DM 가능? 🍁 가격 말해줘",
+      "description": "고위험 케이스 - 대마 이모지 + 거래 키워드",
+      "expectedScore": "70+",
+      "expectedLevel": "high"
+    },
+    "medium-risk": {
+      "text": "요즘 너무 힘들다... 친구들이 🍄 얘기하던데 혹시 DM?",
+      "description": "중위험 케이스 - 취약한 감정 + 은어 이모지",
+      "expectedScore": "40-69",
+      "expectedLevel": "medium"
+    },
+    "low-risk": {
+      "text": "크림파스타 먹자 🍄 ㅋㅋ 레시피 링크 줄게",
+      "description": "저위험 케이스 - 요리 맥락으로 오탐 방지",
+      "expectedScore": "< 40",
+      "expectedLevel": "low"
+    },
+    "false-positive": {
+      "text": "오늘 밤 파티 가자 ✨💊",
+      "description": "새로운 패턴 케이스 - 새로운 이모지 조합",
+      "expectedScore": "50-60",
+      "expectedLevel": "medium"
+    },
+    "cannabis-transaction": {
+      "text": "🍁 품질 좋은데 가격은? 배송 가능?",
+      "description": "대마 거래 의도 명확",
+      "expectedScore": "80+",
+      "expectedLevel": "high"
+    },
+    "emotional-vulnerability": {
+      "text": "너무 우울해... 🍄 한번 해보고 싶어",
+      "description": "감정적 취약성 + 환각제 암시",
+      "expectedScore": "60-75",
+      "expectedLevel": "medium"
+    },
+    "benign-cooking": {
+      "text": "오늘 저녁 🍄 크림파스타 만들었어! 맛있어",
+      "description": "요리 맥락 - 오탐 방지 테스트",
+      "expectedScore": "< 30",
+      "expectedLevel": "low"
+    },
+    "party-drugs": {
+      "text": "파티에서 💊 먹고 춤춰야지!",
+      "description": "파티 + 약물 조합",
+      "expectedScore": "65-80",
+      "expectedLevel": "high"
+    }
+  },
+  "categories": {
+    "high-risk": ["cannabis-transaction", "party-drugs"],
+    "medium-risk": ["medium-risk", "emotional-vulnerability", "false-positive"],
+    "low-risk": ["low-risk", "benign-cooking"]
+  }
+}

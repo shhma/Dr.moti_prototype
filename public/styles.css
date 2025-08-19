@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.emoji {
+    font-size: 3.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.description {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.main {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.input-section {
+    margin-bottom: 40px;
+}
+
+.input-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+#textInput {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+#textInput:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.analyze-btn {
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.results-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.risk-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.risk-level {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.risk-icon {
+    font-size: 2rem;
+}
+
+.risk-text {
+    color: #333;
+}
+
+.risk-score {
+    text-align: center;
+}
+
+.score-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.score-label {
+    font-size: 1.2rem;
+    color: #666;
+    margin-left: 5px;
+}
+
+.analysis-breakdown h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.module-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.module-card {
+    background: white;
+    border: 2px solid #e1e5e9;
+    border-radius: 15px;
+    padding: 20px;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.module-card:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.module-icon {
+    font-size: 1.5rem;
+}
+
+.module-title {
+    font-weight: 600;
+    color: #333;
+}
+
+.module-score {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.module-details {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+.recommendations h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.recommendation-list {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.recommendation-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #e1e5e9;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recommendation-item:last-child {
+    border-bottom: none;
+}
+
+.recommendation-icon {
+    font-size: 1.2rem;
+}
+
+.example-cases {
+    margin-top: 40px;
+}
+
+.example-cases h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.case-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.case-btn {
+    padding: 12px 20px;
+    background: #f8f9fa;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.case-btn:hover {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.add-test-case {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.add-test-case h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.add-case-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-case-form input,
+.add-case-form textarea {
+    padding: 10px;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+.add-case-form input:focus,
+.add-case-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.add-case-btn {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.add-case-btn:hover {
+    background: #218838;
+}
+
+.llm-settings {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.llm-settings h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.llm-status {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e1e5e9;
+}
+
+.llm-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.llm-btn {
+    padding: 8px 16px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.llm-btn:hover {
+    background: #5a6268;
+}
+
+.llm-btn.active {
+    background: #28a745;
+}
+
+.llm-btn.disabled {
+    background: #dc3545;
+    cursor: not-allowed;
+}
+
+.footer {
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* Risk level specific styles */
+.risk-low {
+    color: #28a745;
+}
+
+.risk-medium {
+    color: #ffc107;
+}
+
+.risk-high {
+    color: #dc3545;
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading .analyze-btn {
+    background: #ccc;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .main {
+        padding: 20px;
+    }
+    
+    .title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .input-container {
+        flex-direction: column;
+    }
+    
+    .risk-summary {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .module-results {
+        grid-template-columns: 1fr;
+    }
+    
+    .case-buttons {
+        justify-content: center;
+    }
+}

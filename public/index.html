@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.Moti - Drug Risk eMOji Teen Intervention</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="emoji">🔍</span>
+                Dr.Moti
+                <span class="subtitle">Drug Risk eMOji Teen Intervention</span>
+            </h1>
+            <p class="description">
+                AI 기반 이모지 은어 탐지 시스템으로 미성년자 마약 거래를 방지합니다
+            </p>
+        </header>
+
+        <main class="main">
+            <section class="input-section">
+                <h2>텍스트 분석</h2>
+                <div class="input-container">
+                    <textarea 
+                        id="textInput" 
+                        placeholder="분석할 텍스트를 입력하세요 (이모지 포함 가능)&#10;예시: 오늘 급해. DM 가능? 🍁 가격 말해줘"
+                        rows="4"
+                    ></textarea>
+                    <button id="analyzeBtn" class="analyze-btn">
+                        <span class="btn-icon">🔍</span>
+                        분석 시작
+                    </button>
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>분석 결과</h2>
+                
+                <div class="risk-summary">
+                    <div class="risk-level" id="riskLevel">
+                        <span class="risk-icon">⚠️</span>
+                        <span class="risk-text">분석 중...</span>
+                    </div>
+                    <div class="risk-score" id="riskScore">
+                        <span class="score-number">0</span>
+                        <span class="score-label">점</span>
+                    </div>
+                </div>
+
+                <div class="analysis-breakdown">
+                    <h3>모듈별 분석 결과</h3>
+                    
+                    <div class="module-results">
+                        <div class="module-card" id="ruleCard">
+                            <div class="module-header">
+                                <span class="module-icon">📋</span>
+                                <span class="module-title">룰 기반 탐지</span>
+                            </div>
+                            <div class="module-score" id="ruleScore">0</div>
+                            <div class="module-details" id="ruleDetails"></div>
+                        </div>
+
+                        <div class="module-card" id="emotionCard">
+                            <div class="module-header">
+                                <span class="module-icon">😊</span>
+                                <span class="module-title">감정 분석 (KoBERT)</span>
+                            </div>
+                            <div class="module-score" id="emotionScore">0</div>
+                            <div class="module-details" id="emotionDetails"></div>
+                        </div>
+
+                        <div class="module-card" id="clipCard">
+                            <div class="module-header">
+                                <span class="module-icon">🔗</span>
+                                <span class="module-title">CLIP 분석</span>
+                            </div>
+                            <div class="module-score" id="clipScore">0</div>
+                            <div class="module-details" id="clipDetails"></div>
+                        </div>
+
+                        <div class="module-card" id="llmCard">
+                            <div class="module-header">
+                                <span class="module-icon">🤖</span>
+                                <span class="module-title">LLM 추론</span>
+                            </div>
+                            <div class="module-score" id="llmScore">0</div>
+                            <div class="module-details" id="llmDetails"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendations">
+                    <h3>권장 조치사항</h3>
+                    <div class="recommendation-list" id="recommendationList"></div>
+                </div>
+
+                <div class="example-cases">
+                    <h3>테스트 케이스</h3>
+                    <div class="case-buttons">
+                        <button class="case-btn" data-case="high-risk">고위험 케이스</button>
+                        <button class="case-btn" data-case="medium-risk">중위험 케이스</button>
+                        <button class="case-btn" data-case="low-risk">저위험 케이스</button>
+                        <button class="case-btn" data-case="false-positive">오탐 방지</button>
+                    </div>
+                    
+                    <div class="add-test-case">
+                        <h4>새 테스트 케이스 추가</h4>
+                        <div class="add-case-form">
+                            <input type="text" id="caseName" placeholder="케이스 이름" />
+                            <textarea id="caseText" placeholder="테스트할 텍스트" rows="2"></textarea>
+                            <input type="text" id="caseDescription" placeholder="설명 (선택사항)" />
+                            <button id="addCaseBtn" class="add-case-btn">테스트 케이스 추가</button>
+                        </div>
+                    </div>
+                    
+                    <div class="llm-settings">
+                        <h4>LLM 설정</h4>
+                        <div class="llm-status" id="llmStatus">
+                            <span>현재 LLM: </span>
+                            <span id="currentLLM">확인 중...</span>
+                        </div>
+                        <div class="llm-options">
+                            <button class="llm-btn" data-llm="simulated">시뮬레이션 모드</button>
+                            <button class="llm-btn" data-llm="openai">OpenAI GPT</button>
+                            <button class="llm-btn" data-llm="claude">Claude</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Dr.Moti Prototype - 미성년자 보호를 위한 AI 기반 탐지 시스템</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
