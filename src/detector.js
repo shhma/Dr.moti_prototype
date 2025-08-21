@@ -97,10 +97,16 @@ class DrMotiDetector {
                         this.weights.clip * clipScore + 
                         this.weights.llm * llmScore;
         
-        // LLM이 'high_risk_case' 플래그를 반환하면 최종 점수에 강력한 보너스 부여
+        // LLM이 'high_risk_case' 플래그를 반환하면 최종 점수에 보너스 부여
         if (llm.flags && llm.flags.includes('high_risk_case')) {
-            finalScore += 40; // 고위험 케이스에 대한 강력한 보너스
-            console.log('🚨 HIGH RISK CASE DETECTED! Adding 40 point bonus');
+            // 취약한 감정만 있는 경우는 중위험 보너스, 거래 의도가 있으면 고위험 보너스
+            if (llm.flags.includes('vulnerable_emotion') && !llm.flags.includes('buy_sell_intent')) {
+                finalScore += 20; // 취약한 감정만 있는 경우 중위험 보너스
+                console.log('😢 VULNERABLE EMOTION DETECTED! Adding 20 point bonus');
+            } else {
+                finalScore += 40; // 거래 의도가 있거나 다른 고위험 요소가 있는 경우
+                console.log('🚨 HIGH RISK CASE DETECTED! Adding 40 point bonus');
+            }
         }
         
         // LLM이 'buy_sell_intent' 플래그를 반환하면 중위험 보너스 부여
@@ -146,18 +152,17 @@ class DrMotiDetector {
         
         switch (riskLevel) {
             case 'low':
-                recommendations.immediate = ['로그 저장 (익명화)', '별도 조치 없음'];
+                recommendations.immediate = ['위험 신호 감지 시 사용자에게 경고 문구 제공'];
                 break;
             case 'medium':
                 recommendations.immediate = [
                     '사용자에게 경고 알림 제공',
-                    '예방 교육 자료 링크 제공'
+                    '지속될 경우 상담 및 경고 사진 제공'
                 ];
                 break;
             case 'high':
                 recommendations.immediate = [
-                    '모더레이터에게 즉시 알림',
-                    '옵트인 환경에서 보호자/상담사 연계'
+                    '마약 관련 게시글, 컨텐츠 등 차단 및 계정 정지'
                 ];
                 break;
         }

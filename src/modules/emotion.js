@@ -1,7 +1,7 @@
 class EmotionAnalyzer {
     constructor() {
         // Simulated KoBERT emotion classification
-        this.emotionLabels = ['depression', 'anxiety', 'despair', 'anger', 'neutrality'];
+        this.emotionLabels = ['depression', 'anxiety', 'despair', 'anger', 'others'];
         
         // Korean emotion keywords for simple analysis
         this.emotionKeywords = {
@@ -9,7 +9,7 @@ class EmotionAnalyzer {
             anxiety: ['불안', '걱정', '긴장', '스트레스', '짜증', '화나다', '분하다'],
             despair: ['포기', '끝', '더이상', '안되겠다', '그만', '죽고싶다'],
             anger: ['화나다', '짜증', '열받다', '빡치다', '개빡치다', '미치겠다'],
-            neutrality: ['그냥', '보통', '평범', '괜찮다', '좋다', '행복']
+            others: ['그냥', '보통', '평범', '괜찮다', '좋다', '행복']
         };
     }
 
@@ -30,7 +30,7 @@ class EmotionAnalyzer {
                 anxiety: emotionScores.anxiety,
                 despair: emotionScores.despair,
                 anger: emotionScores.anger,
-                neutrality: emotionScores.neutrality
+                others: emotionScores.others
             }
         };
     }
@@ -43,7 +43,7 @@ class EmotionAnalyzer {
             anxiety: 0,
             despair: 0,
             anger: 0,
-            neutrality: 0
+            others: 0
         };
 
         // Count emotion keywords
@@ -71,7 +71,7 @@ class EmotionAnalyzer {
 
     getDominantEmotion(emotionScores) {
         let maxScore = 0;
-        let dominantEmotion = 'neutrality';
+        let dominantEmotion = 'others';
 
         Object.keys(emotionScores).forEach(emotion => {
             if (emotionScores[emotion] > maxScore) {
